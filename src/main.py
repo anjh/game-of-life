@@ -10,6 +10,11 @@ WIDTH, HEIGHT = 800, 600
 CELL_SIZE = 10
 ROWS, COLS = HEIGHT // CELL_SIZE, WIDTH // CELL_SIZE
 
+# Constants for the top left corner region
+TOP_LEFT_ROWS = ROWS // 2  # Adjust this to change the height of the top left region
+TOP_LEFT_COLS = COLS // 2  # Adjust this to change the width of the top left region
+
+
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -43,8 +48,8 @@ def update_grid():
 
 # Function to randomly populate the grid
 def random_populate():
-    for row in range(ROWS):
-        for col in range(COLS):
+    for row in range(TOP_LEFT_ROWS):
+        for col in range(TOP_LEFT_COLS):
             grid[row][col] = random.randint(0, 1)
 
 # Main loop
