@@ -10,9 +10,8 @@ WIDTH, HEIGHT = 800, 600
 CELL_SIZE = 10
 ROWS, COLS = HEIGHT // CELL_SIZE, WIDTH // CELL_SIZE
 
-# Constants for the top left corner region
-TOP_LEFT_ROWS = ROWS // 2  # Adjust this to change the height of the top left region
-TOP_LEFT_COLS = COLS // 2  # Adjust this to change the width of the top left region
+# Constants for the center region
+CENTER_REGION_SIZE = 20  # Adjust this to change the size of the center region
 
 
 # Colors
@@ -47,14 +46,21 @@ def update_grid():
     grid = new_grid
 
 # Function to randomly populate the grid
-def random_populate():
-    for row in range(TOP_LEFT_ROWS):
-        for col in range(TOP_LEFT_COLS):
+def random_populate_center():
+    center_row = ROWS // 2
+    center_col = COLS // 2
+    start_row = max(0, center_row - CENTER_REGION_SIZE // 2)
+    end_row = min(ROWS, center_row + CENTER_REGION_SIZE // 2)
+    start_col = max(0, center_col - CENTER_REGION_SIZE // 2)
+    end_col = min(COLS, center_col + CENTER_REGION_SIZE // 2)
+
+    for row in range(start_row, end_row):
+        for col in range(start_col, end_col):
             grid[row][col] = random.randint(0, 1)
 
 # Main loop
 running = True
-random_populate()  # Populate the grid randomly
+random_populate_center()  # Populate the grid randomly
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
