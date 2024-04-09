@@ -8,6 +8,7 @@ __pycache__/
 
 # local files
 env/
+.DS_Store
 
 # Distribution / packaging
 .Python
